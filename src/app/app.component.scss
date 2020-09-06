@@ -1,3 +1,41 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 a {
     cursor: pointer;
+}
+
+.jumbotron {
+    padding: 48px 30px 12px 30px;
+    background-color: #fff;
+}
+.text-center {
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 12px;
+    p {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    .description {
+        color: #999999;
+        margin-bottom: 5px;
+    }
+    .learn-more {
+        color: #006eaf;
+        :hover {
+            color: #006eaf;
+            text-decoration: underline;
+        }
+    }
+}
+
+.col-sm-6.offset-sm-3 {
+    padding-right: 0;
+    padding-left: 0;
 }
