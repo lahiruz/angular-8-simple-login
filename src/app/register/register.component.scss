@@ -3,11 +3,11 @@
 }
 
 .form-group {
-    &.new-user {
+    &.sign-in {
         margin-top:12px;
     }
     margin-bottom: 0;
-    .register {
+    p {
         display: flex;
         align-items: center;
         justify-content: center;
