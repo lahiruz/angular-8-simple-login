@@ -10,18 +10,6 @@
         margin-top:12px;
     }
     margin-bottom: 0;
-    > label {
-        margin-bottom: 8px;
-        line-height: 22px;
-        color: #3c3c3c;
-        font-size: 16px;;
-    }
-    input {
-        margin-bottom: 12px;
-        line-height: 22px;
-        color: #3c3c3c;
-        font-size: 16px;;
-    }
     .register {
         display: flex;
         align-items: center;
@@ -43,15 +31,4 @@
             }
         }
     }
-}
-
-
-
-.btn.next {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    line-height: 22px;
-    color:#fff;
-    background-color: #1e88e5;
 }
