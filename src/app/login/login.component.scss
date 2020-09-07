@@ -3,11 +3,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 24px;
     .previous{
         position: absolute;
-        left: 10px;
+        left: 0;
+        padding: 0;
     }
     .welcome {
         text-align: center;
+        h2 {
+            font-size: 22px;
+            line-height: 28px;
+            color: #000;
+        }
+        p {
+            font-size: 14px;
+            line-height: 20px;
+            color: #808080;
+        }
     }
 }
