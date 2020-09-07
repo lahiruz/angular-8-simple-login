@@ -1,5 +1,12 @@
-﻿<h2>Welcome</h2>
-<h3>{{userName}}</h3>
+﻿<div class="user">
+    <a routerLink="/welcome" class="previous nav-item nav-link">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </a>
+    <div class="welcome">
+        <h2>Welcome</h2>
+        <p>{{userName}}</p>
+    </div>
+</div>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="password">Password</label>

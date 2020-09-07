@@ -24,7 +24,10 @@ export class WelcomeComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
+        const {username, password} = this.authenticationService.currentUserValue || {};
+        if (username && !password) {
+            this.router.navigate(['/welcome']);
+        } else {
             this.router.navigate(['/']);
         }
     }

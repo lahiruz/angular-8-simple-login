@@ -1,0 +1,13 @@
+.user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .previous{
+        position: absolute;
+        left: 10px;
+    }
+    .welcome {
+        text-align: center;
+    }
+}
