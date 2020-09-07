@@ -11,7 +11,7 @@ import './welcome.component.scss';
     templateUrl: 'welcome.component.html'
 })
 export class WelcomeComponent implements OnInit {
-    loginForm: FormGroup;
+    welcomeForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -30,9 +30,8 @@ export class WelcomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
+        this.welcomeForm = this.formBuilder.group({
+            username: ['', Validators.required]
         });
 
         // get return url from route parameters or default to '/'
@@ -40,7 +39,7 @@ export class WelcomeComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    get f() { return this.welcomeForm.controls; }
 
     onSubmit() {
         this.submitted = true;
@@ -49,16 +48,16 @@ export class WelcomeComponent implements OnInit {
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.loginForm.invalid) {
+        if (this.welcomeForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.verifyUserName(this.f.username.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    this.router.navigate(['/login']);
                 },
                 error => {
                     this.alertService.error(error);

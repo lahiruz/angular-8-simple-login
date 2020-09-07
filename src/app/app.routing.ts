@@ -8,7 +8,8 @@ import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: WelcomeComponent },
+    { path: 'welcome', component: WelcomeComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: '**', redirectTo: '' }
 ];

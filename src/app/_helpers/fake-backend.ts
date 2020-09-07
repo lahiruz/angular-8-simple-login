@@ -20,6 +20,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function handleRoute() {
             switch (true) {
+                case url.endsWith('/users/verifyUser') && method === 'POST':
+                    return verifyUser();
                 case url.endsWith('/users/authenticate') && method === 'POST':
                     return authenticate();
                 case url.endsWith('/users/register') && method === 'POST':
@@ -35,11 +37,20 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         // route functions
+        function verifyUser() {
+            const { username } = body;
+            const user = users.find(x => x.username === username);
+            if (!user) return error('Username is incorrect');
+            return ok({
+                id: user.id,
+                username: user.username
+            })
+        }
 
         function authenticate() {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
-            if (!user) return error('Username or password is incorrect');
+            if (!user) return error('Password is incorrect');
             return ok({
                 id: user.id,
                 username: user.username,
