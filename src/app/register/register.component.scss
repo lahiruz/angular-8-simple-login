@@ -2,6 +2,17 @@
     margin-bottom: 24px;
 }
 
+.form-group-multiple {
+    display: flex;
+    width: 100%;
+    > div {
+        &:first-child{
+            margin-right: 10px;
+        }
+        width: calc(50% - 5px);
+    }
+}
+
 .form-group {
     &.sign-in {
         margin-top:12px;

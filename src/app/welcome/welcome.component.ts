@@ -14,6 +14,7 @@ export class WelcomeComponent implements OnInit {
     welcomeForm: FormGroup;
     loading = false;
     submitted = false;
+    invalidUserName = false;
     returnUrl: string;
 
     constructor(
@@ -48,7 +49,7 @@ export class WelcomeComponent implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+        // this.alertService.clear();
 
         // stop here if form is invalid
         if (this.welcomeForm.invalid) {
@@ -63,7 +64,8 @@ export class WelcomeComponent implements OnInit {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.invalidUserName = true;
+                    // this.alertService.error(error);
                     this.loading = false;
                 });
     }
