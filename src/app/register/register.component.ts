@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, UserService, AuthenticationService } from '@/_services';
+import { AlertService } from '../_alert';
+import { UserService, AuthenticationService } from '@/_services';
 import { MustMatch } from '../_helpers/matching-validate';
 import './register.component.scss';
 
@@ -49,9 +50,6 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        this.alertService.clear();
-
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
@@ -63,8 +61,8 @@ export class RegisterComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
-                this.alertService.success('Registration successful', true);
-                this.router.navigate(['/welcome']);
+                this.alertService.success('Account created successfully');
+                // this.router.navigate(['/welcome']);
             },
             error => {
                 this.alertService.error(error);

@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, AuthenticationService } from '@/_services';
+import { AlertService } from '../_alert';
+import { AuthenticationService } from '@/_services';
 
 import './login.component.scss';
 
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
+    invalidPassword = false;
     returnUrl: string;
     userName: string;
 
@@ -47,9 +49,6 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        this.alertService.clear();
-
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
@@ -60,10 +59,11 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                    this.alertService.success('Signed in successfully');
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.invalidPassword = true;
                     this.loading = false;
                 });
     }

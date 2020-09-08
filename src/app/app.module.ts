@@ -13,13 +13,14 @@ import { HomeComponent } from './home';
 import { WelcomeComponent } from './welcome';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { AlertComponent } from './_components';
+import { AlertModule } from './_alert';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
+        AlertModule,
         appRoutingModule
     ],
     declarations: [
@@ -27,8 +28,7 @@ import { AlertComponent } from './_components';
         HomeComponent,
         WelcomeComponent,
         LoginComponent,
-        RegisterComponent,
-        AlertComponent
+        RegisterComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

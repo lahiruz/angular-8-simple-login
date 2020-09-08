@@ -1,5 +1,9 @@
-﻿<div class="form-group sign-in">
-    <p><a (click)="logout()" class="btn btn-link">Sign Out</a></p>
+﻿<div class="home-wrapper">
+    <div class="form-group sign-out">
+        <p><a (click)="logout()" class="btn btn-link">Sign out</a></p>
+    </div>
+    <div class="description">
+        <h2>Hi {{currentUser.firstName}}!</h2>
+        <p>Welcome to ABC</p>
+    </div>
 </div>
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>Welcome to ABC!</p>

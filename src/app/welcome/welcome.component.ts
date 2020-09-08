@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, AuthenticationService } from '@/_services';
+import { AuthenticationService } from '@/_services';
 
 import './welcome.component.scss';
 
@@ -21,8 +21,7 @@ export class WelcomeComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService
+        private authenticationService: AuthenticationService
     ) {
         // redirect to home if already logged in
         const {username, password} = this.authenticationService.currentUserValue || {};
@@ -48,9 +47,6 @@ export class WelcomeComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        // this.alertService.clear();
-
         // stop here if form is invalid
         if (this.welcomeForm.invalid) {
             return;
@@ -65,7 +61,6 @@ export class WelcomeComponent implements OnInit {
                 },
                 error => {
                     this.invalidUserName = true;
-                    // this.alertService.error(error);
                     this.loading = false;
                 });
     }

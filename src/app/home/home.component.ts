@@ -1,9 +1,9 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 import { User } from '@/_models';
-import { UserService, AuthenticationService } from '@/_services';
+import { AuthenticationService } from '@/_services';
+import './home.component.scss';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {

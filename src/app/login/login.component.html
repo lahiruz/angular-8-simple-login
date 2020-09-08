@@ -10,9 +10,13 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <input type="password" formControlName="password" class="form-control" (keyup)="invalidPassword = false"
+        [ngClass]="{ 'is-invalid': (submitted && f.password.errors) || (submitted && invalidPassword) }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+        <div *ngIf="submitted && invalidPassword" class="invalid-feedback">
+            <div *ngIf="invalidPassword">The Password is not matched.</div>
         </div>
     </div>
     <div class="form-group">
